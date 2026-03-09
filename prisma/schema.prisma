@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model AdminUser {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+}
+
+model Inquiry {
+  id          Int      @id @default(autoincrement())
+  name        String
+  email       String
+  phone       String?
+  serviceType String
+  message     String
+  status      String   @default("new")
+  createdAt   DateTime @default(now())
+}
+
+model BlogPost {
+  id        Int      @id @default(autoincrement())
+  title     String
+  slug      String   @unique
+  content   String
+  excerpt   String?
+  imageUrl  String?
+  author    String
+  published Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Service {
+  id          Int    @id @default(autoincrement())
+  title       String
+  slug        String @default("")
+  badge       String @default("")
+  description String
+  imageUrl    String @default("")
+  items       String @default("")
+  category    String @default("main")
+  order       Int    @default(0)
+}
+
+model Partner {
+  id        Int    @id @default(autoincrement())
+  name      String
+  role      String
+  imageUrl  String @default("")
+  bio       String
+  expertise String
+  education String
+  order     Int    @default(0)
+}
+
+model SiteSetting {
+  key   String @id
+  value String
+}
