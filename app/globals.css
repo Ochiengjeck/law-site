@@ -25,3 +25,75 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+.animate-fade-up {
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 1.8s ease-in-out infinite;
+}
+
+/* Ghost / outline heading text */
+.text-outline {
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.75);
+  color: transparent;
+}
+
+/* Gold line draw-in */
+@keyframes drawLine {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+.animate-draw-line {
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: drawLine 1.2s cubic-bezier(0.4, 0, 0.2, 1) 1s forwards;
+}
+
+/* Slow rotating ring */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 40s linear infinite;
+}
+
+/* Blinking cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.cursor-blink {
+  animation: blink 0.9s step-end infinite;
+}
+
+/* Scroll pulse line */
+@keyframes scrollDrop {
+  0%   { height: 0;    opacity: 1; top: 0; }
+  100% { height: 36px; opacity: 0; top: 0; }
+}
+
+.animate-scroll-drop::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 1px;
+  background: #C9A84C;
+  animation: scrollDrop 1.6s ease-in-out infinite;
+}
