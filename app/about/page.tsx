@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PageHero from "@/components/PageHero";
 import Link from "next/link";
 import { getPageSettings } from "@/lib/siteSettings";
 
@@ -30,91 +31,99 @@ export default async function AboutPage() {
     <>
       <Navbar />
       <main>
-        {/* Hero */}
-        <section className="relative pt-36 pb-24 px-6">
-          <Image
-            src={s["hero.imageUrl"]}
-            alt="About hero"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-navy/80" />
-          <div className="relative z-10 max-w-3xl mx-auto">
-            <p className="text-gold text-xs tracking-widest uppercase mb-4 font-medium">
-              About the Firm
-            </p>
-            <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
-              {s["hero.title"]}
-            </h1>
-            <p className="text-gray-300 text-lg leading-relaxed">{s["hero.subtitle"]}</p>
-          </div>
-        </section>
 
-        {/* Mission: 2-col text + image */}
-        <section className="py-24 px-6 bg-white">
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+        {/* ─── Hero ─────────────────────────────────────────────────── */}
+        <PageHero
+          imageUrl={s["hero.imageUrl"]}
+          category="About the Firm"
+          title={s["hero.title"]}
+          subtitle={s["hero.subtitle"]}
+        />
+
+        {/* ─── Mission ──────────────────────────────────────────────── */}
+        <section className="py-16 px-6 bg-white">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="text-gold text-xs tracking-widest uppercase mb-4 font-medium">
-                Our Philosophy
-              </p>
-              <h2 className="text-3xl font-bold text-navy mb-6">{s["mission.title"]}</h2>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-6 h-px bg-gold" />
+                <p className="text-gold text-xs tracking-[0.4em] uppercase font-medium">
+                  Our Philosophy
+                </p>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black text-navy mb-6 leading-tight">
+                {s["mission.title"]}
+              </h2>
               <p className="text-gray-600 leading-relaxed mb-5">{s["mission.text1"]}</p>
               <p className="text-gray-600 leading-relaxed">{s["mission.text2"]}</p>
             </div>
+
             <div className="relative">
-              <div className="relative h-80 rounded-2xl overflow-hidden ring-4 ring-gold/25">
-                <Image
-                  src={s["mission.imageUrl"]}
-                  alt="SW Law LLP office"
-                  fill
-                  className="object-cover"
-                />
+              <div className="border-l-4 border-gold pl-4">
+                <div className="relative h-72 overflow-hidden">
+                  <Image
+                    src={s["mission.imageUrl"]}
+                    alt="SW Law LLP office"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
               </div>
-              <div className="absolute -bottom-4 -right-4 w-28 h-28 bg-gold/15 rounded-2xl -z-10" />
+              <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-gold/10 -z-10" />
             </div>
           </div>
         </section>
 
-        {/* Pull quote */}
-        <section className="py-16 px-6 bg-light-gray">
+        {/* ─── Pull Quote ───────────────────────────────────────────── */}
+        <section className="py-12 px-6 bg-light-gray">
           <div className="max-w-4xl mx-auto">
-            <blockquote className="border-l-4 border-gold pl-8 py-2">
-              <p className="text-2xl md:text-3xl text-navy font-medium italic leading-relaxed">
-                &ldquo;{s["quote"]}&rdquo;
+            <div className="text-7xl text-gold/10 font-black leading-none mb-2 select-none" aria-hidden="true">
+              &ldquo;
+            </div>
+            <blockquote className="border-l-4 border-gold pl-8 -mt-6">
+              <p className="text-xl md:text-2xl text-navy font-black leading-relaxed">
+                {s["quote"]}
               </p>
             </blockquote>
           </div>
         </section>
 
-        {/* Blue Economy */}
-        <section className="py-24 px-6 bg-white">
+        {/* ─── Blue Economy ─────────────────────────────────────────── */}
+        <section className="py-16 px-6 bg-white">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-14">
-              <p className="text-gold text-xs tracking-widest uppercase mb-3 font-medium">
-                Focus Area
-              </p>
-              <h2 className="text-3xl font-bold text-navy mb-4">{s["blueEconomy.title"]}</h2>
-              <p className="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto">
+            <div className="mb-8">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-6 h-px bg-gold" />
+                <p className="text-gold text-xs tracking-[0.4em] uppercase font-medium">
+                  Focus Area
+                </p>
+              </div>
+              <h2 className="text-3xl font-black text-navy mb-3">{s["blueEconomy.title"]}</h2>
+              <p className="text-gray-600 leading-relaxed max-w-2xl">
                 {s["blueEconomy.subtitle"]}
               </p>
             </div>
-            <div className="grid md:grid-cols-3 gap-8">
-              {blueEconomy.map((item) => (
+
+            <div className="grid md:grid-cols-3 gap-5">
+              {blueEconomy.map((item, i) => (
                 <div
                   key={item.heading}
-                  className="rounded-xl overflow-hidden border border-gray-100 group"
+                  className="border border-gray-100 hover:border-gold/30 transition-colors group overflow-hidden"
                 >
-                  <div className="relative h-48 overflow-hidden">
+                  <div className="relative h-44 overflow-hidden">
                     <Image
                       src={item.imageUrl}
                       alt={item.heading}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent" />
+                    <span className="absolute top-3 right-3 text-4xl font-black text-gold/20 leading-none select-none">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                   </div>
-                  <div className="p-6">
-                    <h3 className="font-bold text-navy mb-2">{item.heading}</h3>
+                  <div className="p-5">
+                    <h3 className="font-black text-navy mb-2">{item.heading}</h3>
+                    <div className="w-0 group-hover:w-full h-px bg-gold transition-all duration-500 mb-3" />
                     <p className="text-gray-500 text-sm leading-relaxed">{item.body}</p>
                   </div>
                 </div>
@@ -123,20 +132,24 @@ export default async function AboutPage() {
           </div>
         </section>
 
-        {/* Values */}
-        <section className="py-24 px-6 bg-navy">
+        {/* ─── Values ───────────────────────────────────────────────── */}
+        <section className="py-16 px-6 bg-navy">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-14">
-              <p className="text-gold text-xs tracking-widest uppercase mb-3 font-medium">
-                What We Stand For
-              </p>
-              <h2 className="text-3xl font-bold text-white mb-4">Our Values</h2>
+            <div className="mb-8">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-6 h-px bg-gold" />
+                <p className="text-gold text-xs tracking-[0.4em] uppercase font-medium">
+                  What We Stand For
+                </p>
+              </div>
+              <h2 className="text-3xl font-black text-white">Our Values</h2>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {values.map((value) => (
-                <div key={value.title} className="text-center">
-                  <div className="text-4xl mb-4 text-gold">{value.icon}</div>
-                  <h3 className="font-bold text-white mb-3">{value.title}</h3>
+                <div key={value.title} className="border-t-2 border-gold/40 pt-5">
+                  <div className="text-2xl mb-3">{value.icon}</div>
+                  <h3 className="font-black text-white text-base mb-2">{value.title}</h3>
                   <p className="text-gray-400 text-sm leading-relaxed">{value.description}</p>
                 </div>
               ))}
@@ -144,23 +157,26 @@ export default async function AboutPage() {
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="py-20 px-6 bg-white text-center">
-          <div className="max-w-xl mx-auto">
-            <h2 className="text-2xl font-bold text-navy mb-4">
+        {/* ─── CTA ──────────────────────────────────────────────────── */}
+        <section className="py-16 px-6 bg-navy-dark text-center">
+          <div className="max-w-xl mx-auto border border-white/15 p-10">
+            <div className="w-10 h-px bg-gold mx-auto mb-5" />
+            <h2 className="text-2xl md:text-3xl font-black text-white mb-4 leading-tight">
               Work with a firm that shares your values
             </h2>
-            <p className="text-gray-500 mb-8">
+            <div className="w-10 h-px bg-gold mx-auto mb-5" />
+            <p className="text-white/60 text-sm mb-8">
               Contact us to discuss how we can assist with your legal needs.
             </p>
             <Link
               href="/contact"
-              className="bg-gold text-navy font-semibold px-8 py-3 rounded hover:bg-gold-dark transition-colors inline-block"
+              className="bg-gold text-navy font-bold px-8 py-3 text-xs tracking-widest uppercase hover:bg-gold-dark transition-colors inline-block"
             >
               Contact Us Today
             </Link>
           </div>
         </section>
+
       </main>
       <Footer />
     </>

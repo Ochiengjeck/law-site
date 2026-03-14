@@ -6,10 +6,10 @@ export const metadata = { title: "Inquiries" };
 const STATUS_OPTIONS = ["new", "in-progress", "resolved", "closed"];
 
 const statusColors: Record<string, string> = {
-  new: "bg-blue-100 text-blue-700",
-  "in-progress": "bg-yellow-100 text-yellow-700",
-  resolved: "bg-green-100 text-green-700",
-  closed: "bg-gray-100 text-gray-600",
+  new: "bg-blue-100 text-blue-700 border-blue-200",
+  "in-progress": "bg-yellow-100 text-yellow-700 border-yellow-200",
+  resolved: "bg-green-100 text-green-700 border-green-200",
+  closed: "bg-gray-100 text-gray-600 border-gray-200",
 };
 
 export default async function InquiriesPage() {
@@ -22,7 +22,7 @@ export default async function InquiriesPage() {
       <h1 className="text-2xl font-bold text-navy mb-8">Client Inquiries</h1>
 
       {inquiries.length === 0 ? (
-        <div className="bg-white rounded-lg border border-gray-200 p-12 text-center text-gray-400">
+        <div className="bg-white border border-gray-200 p-12 text-center text-gray-400">
           No inquiries yet.
         </div>
       ) : (
@@ -30,7 +30,7 @@ export default async function InquiriesPage() {
           {inquiries.map((inq) => (
             <div
               key={inq.id}
-              className="bg-white rounded-lg border border-gray-200 p-6"
+              className="bg-white border border-gray-200 p-6"
             >
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
@@ -46,8 +46,8 @@ export default async function InquiriesPage() {
 
                 <div className="flex items-center gap-3">
                   <span
-                    className={`text-xs px-2 py-1 rounded-full font-medium ${
-                      statusColors[inq.status] ?? "bg-gray-100 text-gray-600"
+                    className={`text-xs px-2 py-1 border font-medium ${
+                      statusColors[inq.status] ?? "bg-gray-100 text-gray-600 border-gray-200"
                     }`}
                   >
                     {inq.status}
@@ -63,7 +63,7 @@ export default async function InquiriesPage() {
                     <select
                       name="status"
                       defaultValue={inq.status}
-                      className="text-xs border border-gray-300 rounded px-2 py-1 focus:outline-none"
+                      className="text-xs border border-gray-300 px-2 py-1 focus:outline-none focus:border-navy rounded-none"
                     >
                       {STATUS_OPTIONS.map((s) => (
                         <option key={s} value={s}>
@@ -73,7 +73,7 @@ export default async function InquiriesPage() {
                     </select>
                     <button
                       type="submit"
-                      className="text-xs bg-navy text-white px-2 py-1 rounded hover:bg-navy-dark transition-colors"
+                      className="text-xs bg-navy text-white px-3 py-1 hover:bg-navy-dark transition-colors"
                     >
                       Update
                     </button>
