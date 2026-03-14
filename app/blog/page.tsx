@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PageHero from "@/components/PageHero";
 import { prisma } from "@/lib/prisma";
 import { getPageSettings } from "@/lib/siteSettings";
 
@@ -27,42 +28,31 @@ export default async function BlogPage() {
     <>
       <Navbar />
       <main>
-        {/* Hero */}
-        <section className="relative pt-36 pb-24 px-6">
-          <Image
-            src={s["hero.imageUrl"]}
-            alt="Insights hero"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-navy/80" />
-          <div className="relative z-10 max-w-3xl mx-auto">
-            <p className="text-gold text-xs tracking-widest uppercase mb-4 font-medium">
-              Thought Leadership
-            </p>
-            <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
-              {s["hero.title"]}
-            </h1>
-            <p className="text-gray-300 text-lg leading-relaxed">{s["hero.subtitle"]}</p>
-          </div>
-        </section>
 
-        {/* Posts */}
-        <section className="py-16 px-6 bg-light-gray min-h-[50vh]">
+        {/* ─── Hero ─────────────────────────────────────────────────── */}
+        <PageHero
+          imageUrl={s["hero.imageUrl"]}
+          category="Thought Leadership"
+          title={s["hero.title"]}
+          subtitle={s["hero.subtitle"]}
+        />
+
+        {/* ─── Posts ────────────────────────────────────────────────── */}
+        <section className="py-14 px-6 bg-light-gray min-h-[50vh]">
           <div className="max-w-6xl mx-auto">
             {posts.length === 0 ? (
               <div className="text-center py-20 text-gray-400">
-                <p className="text-lg">No insights published yet.</p>
+                <p className="text-lg font-black text-navy">No insights published yet.</p>
                 <p className="text-sm mt-2">Check back soon.</p>
               </div>
             ) : (
-              <div className="space-y-6">
-                {/* Featured post — full width */}
+              <div className="space-y-5">
+
+                {/* Featured post */}
                 {featured && (
                   <Link
                     href={`/blog/${featured.slug}`}
-                    className="group relative block rounded-2xl overflow-hidden h-80 md:h-96"
+                    className="group relative block overflow-hidden h-64 md:h-80"
                   >
                     <Image
                       src={
@@ -74,11 +64,11 @@ export default async function BlogPage() {
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-8">
-                      <span className="inline-block bg-gold text-navy text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase tracking-wide">
+                    <div className="absolute bottom-0 left-0 right-0 p-7">
+                      <span className="inline-block bg-gold text-navy text-xs font-bold px-3 py-1 tracking-widest uppercase mb-3">
                         Featured
                       </span>
-                      <h2 className="text-2xl md:text-3xl font-bold text-white mb-2 group-hover:text-gold transition-colors">
+                      <h2 className="text-xl md:text-2xl font-black text-white mb-2 group-hover:text-gold transition-colors leading-tight">
                         {featured.title}
                       </h2>
                       {featured.excerpt && (
@@ -87,6 +77,7 @@ export default async function BlogPage() {
                         </p>
                       )}
                       <p className="text-gray-400 text-xs mt-3">
+                        <span className="text-gold">•</span>{" "}
                         {new Date(featured.createdAt).toLocaleDateString("en-KE", {
                           day: "numeric",
                           month: "long",
@@ -98,16 +89,16 @@ export default async function BlogPage() {
                   </Link>
                 )}
 
-                {/* Remaining posts — 3-col grid */}
+                {/* Remaining posts */}
                 {rest.length > 0 && (
-                  <div className="grid md:grid-cols-3 gap-6">
+                  <div className="grid md:grid-cols-3 gap-4">
                     {rest.map((post) => (
                       <Link
                         key={post.id}
                         href={`/blog/${post.slug}`}
-                        className="bg-white rounded-xl overflow-hidden hover:shadow-lg transition-shadow group border border-gray-100"
+                        className="bg-white border border-gray-100 hover:border-gold/20 hover:-translate-y-0.5 transition-all duration-300 group overflow-hidden block"
                       >
-                        <div className="relative h-44 overflow-hidden">
+                        <div className="relative h-40 overflow-hidden">
                           <Image
                             src={
                               post.imageUrl ||
@@ -118,8 +109,9 @@ export default async function BlogPage() {
                             className="object-cover group-hover:scale-105 transition-transform duration-300"
                           />
                         </div>
-                        <div className="p-6">
+                        <div className="p-5">
                           <p className="text-xs text-gray-400 mb-2">
+                            <span className="text-gold">•</span>{" "}
                             {new Date(post.createdAt).toLocaleDateString("en-KE", {
                               day: "numeric",
                               month: "long",
@@ -127,15 +119,15 @@ export default async function BlogPage() {
                             })}{" "}
                             &middot; {post.author}
                           </p>
-                          <h3 className="text-navy font-bold mb-2 group-hover:text-gold transition-colors line-clamp-2 leading-snug">
+                          <h3 className="text-navy font-black mb-2 group-hover:text-gold transition-colors line-clamp-2 leading-snug text-sm">
                             {post.title}
                           </h3>
                           {post.excerpt && (
-                            <p className="text-gray-500 text-sm leading-relaxed line-clamp-2">
+                            <p className="text-gray-500 text-xs leading-relaxed line-clamp-2">
                               {post.excerpt}
                             </p>
                           )}
-                          <p className="text-gold text-sm font-medium mt-4">Read more →</p>
+                          <p className="text-gold text-xs font-semibold mt-4 tracking-wide">Read more →</p>
                         </div>
                       </Link>
                     ))}
@@ -145,6 +137,7 @@ export default async function BlogPage() {
             )}
           </div>
         </section>
+
       </main>
       <Footer />
     </>

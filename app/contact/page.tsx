@@ -20,13 +20,18 @@ export default async function ContactPage() {
       <Navbar />
       <main>
         <div className="flex flex-col md:flex-row min-h-screen">
-          {/* Left: Form */}
-          <div className="flex-1 px-8 py-24 md:py-36 md:px-14 lg:px-20">
+
+          {/* ─── Left: Form ───────────────────────────────────────────── */}
+          <div className="flex-1 px-8 py-20 md:py-28 md:px-14 lg:px-20">
             <div className="max-w-lg mx-auto md:mx-0 md:ml-auto">
-              <p className="text-gold text-xs tracking-widest uppercase mb-3 font-medium">
-                Get in Touch
-              </p>
-              <h1 className="text-3xl font-bold text-navy mb-2">Contact SW Law LLP</h1>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-6 h-px bg-gold" />
+                <p className="text-gold text-xs tracking-[0.4em] uppercase font-medium">
+                  Get in Touch
+                </p>
+              </div>
+
+              <h1 className="text-3xl font-black text-navy mb-2">Contact SW Law LLP</h1>
               <p className="text-gray-500 mb-8 leading-relaxed text-sm">
                 Submit your enquiry and a member of our team will respond promptly. All
                 communications are treated with strict confidentiality.
@@ -34,13 +39,13 @@ export default async function ContactPage() {
 
               <ContactForm />
 
-              <div className="mt-10 pt-8 border-t border-gray-100 grid grid-cols-2 gap-6">
+              <div className="mt-8 pt-6 border-t border-gold/30 grid grid-cols-2 gap-6">
                 <div>
-                  <h3 className="font-semibold text-navy mb-1 text-sm">Email</h3>
+                  <h3 className="font-black text-navy mb-1 text-xs uppercase tracking-widest">Email</h3>
                   <p className="text-gray-500 text-sm">{s["email"]}</p>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-navy mb-1 text-sm">Office Hours</h3>
+                  <h3 className="font-black text-navy mb-1 text-xs uppercase tracking-widest">Office Hours</h3>
                   <p className="text-gray-500 text-sm leading-relaxed">
                     {officeHoursLines.map((line, i) => (
                       <span key={i}>
@@ -52,7 +57,7 @@ export default async function ContactPage() {
                 </div>
               </div>
 
-              <div className="mt-6 bg-light-gray rounded-lg p-4 border-l-4 border-gold">
+              <div className="mt-6 border-l-4 border-gold bg-light-gray p-4">
                 <p className="text-sm text-gray-600 leading-relaxed">
                   <strong className="text-navy">Confidentiality Notice:</strong> All information
                   submitted through this form is treated as strictly confidential and subject to
@@ -62,7 +67,7 @@ export default async function ContactPage() {
             </div>
           </div>
 
-          {/* Right: Image with overlay */}
+          {/* ─── Right: Image ─────────────────────────────────────────── */}
           <div className="relative hidden md:block w-full md:w-5/12 lg:w-1/2">
             <Image
               src={s["imageUrl"]}
@@ -70,15 +75,20 @@ export default async function ContactPage() {
               fill
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-navy/75 flex flex-col items-center justify-center p-12 text-white text-center">
-              <p className="text-gold text-xs tracking-widest uppercase mb-6 font-medium">
-                SW Law LLP
-              </p>
-              <h2 className="text-3xl font-bold leading-snug mb-6">{s["tagline"]}</h2>
-              <p className="text-white/60 text-sm">Nairobi, Kenya</p>
-              <div className="mt-10 w-12 h-0.5 bg-gold" />
+            <div className="absolute inset-0 bg-gradient-to-br from-navy-dark/92 to-navy/80 flex flex-col items-center justify-center p-12 text-white text-center">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-6 h-px bg-gold" />
+                <p className="text-gold text-xs tracking-[0.4em] uppercase font-medium">
+                  SW Law LLP
+                </p>
+                <div className="w-6 h-px bg-gold" />
+              </div>
+              <h2 className="text-2xl md:text-3xl font-black leading-snug mb-4">{s["tagline"]}</h2>
+              <div className="w-10 h-px bg-gold mb-4" />
+              <p className="text-white/50 text-xs tracking-widest uppercase">Nairobi, Kenya</p>
             </div>
           </div>
+
         </div>
       </main>
       <Footer />

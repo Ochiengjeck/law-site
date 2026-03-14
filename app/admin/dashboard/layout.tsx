@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { getSession } from "@/lib/auth";
 import AdminNav from "@/components/AdminNav";
+import { prisma } from "@/lib/prisma";
 
 export default async function DashboardLayout({
   children,
@@ -10,10 +11,15 @@ export default async function DashboardLayout({
   const session = await getSession();
   if (!session) redirect("/admin");
 
+  const [logoSetting, nameSetting] = await Promise.all([
+    prisma.siteSetting.findUnique({ where: { key: "site.logoUrl" } }),
+    prisma.siteSetting.findUnique({ where: { key: "site.name" } }),
+  ]);
+
   return (
-    <div className="flex min-h-screen bg-light-gray">
-      <AdminNav />
-      <main className="flex-1 p-8 overflow-auto">{children}</main>
+    <div className="flex h-screen overflow-hidden bg-light-gray">
+      <AdminNav logoUrl={logoSetting?.value} siteName={nameSetting?.value} />
+      <main className="flex-1 overflow-y-auto p-8">{children}</main>
     </div>
   );
 }

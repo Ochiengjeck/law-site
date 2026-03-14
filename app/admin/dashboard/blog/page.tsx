@@ -15,21 +15,21 @@ export default async function AdminBlogPage() {
         <h1 className="text-2xl font-bold text-navy">Blog Posts</h1>
         <Link
           href="/admin/dashboard/blog/new"
-          className="bg-navy text-white text-sm font-medium px-5 py-2 rounded hover:bg-navy-dark transition-colors"
+          className="bg-navy text-white text-xs font-medium px-5 py-2.5 hover:bg-navy-dark transition-colors tracking-widest uppercase"
         >
           + New Post
         </Link>
       </div>
 
       {posts.length === 0 ? (
-        <div className="bg-white rounded-lg border border-gray-200 p-12 text-center text-gray-400">
+        <div className="bg-white border border-gray-200 p-12 text-center text-gray-400">
           No posts yet.{" "}
           <Link href="/admin/dashboard/blog/new" className="text-navy underline">
             Create your first post
           </Link>
         </div>
       ) : (
-        <div className="bg-white rounded-lg border border-gray-200 divide-y divide-gray-100">
+        <div className="bg-white border border-gray-200 divide-y divide-gray-100">
           {posts.map((post) => (
             <div
               key={post.id}
@@ -45,10 +45,10 @@ export default async function AdminBlogPage() {
 
               <div className="flex items-center gap-3 flex-shrink-0">
                 <span
-                  className={`text-xs px-2 py-1 rounded-full font-medium ${
+                  className={`text-xs px-2 py-1 border font-medium ${
                     post.published
-                      ? "bg-green-100 text-green-700"
-                      : "bg-gray-100 text-gray-500"
+                      ? "bg-green-100 text-green-700 border-green-200"
+                      : "bg-gray-100 text-gray-500 border-gray-200"
                   }`}
                 >
                   {post.published ? "Published" : "Draft"}
