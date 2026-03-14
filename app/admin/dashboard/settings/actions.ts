@@ -28,12 +28,7 @@ export async function updateSettings(formData: FormData): Promise<void> {
     });
   }
 
-  revalidatePath("/");
-  revalidatePath("/about");
-  revalidatePath("/services");
-  revalidatePath("/partners");
-  revalidatePath("/blog");
-  revalidatePath("/contact");
+  revalidatePath("/", "layout");
 
   redirect(`/admin/dashboard/settings?tab=${tab}&saved=1`);
 }
