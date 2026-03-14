@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && prisma db push && next build",
     "start": "next start",
     "lint": "eslint",
     "seed": "npx tsx prisma/seed.ts"
@@ -12,6 +12,7 @@
   "dependencies": {
     "@prisma/client": "6.19.2",
     "bcryptjs": "^3.0.3",
+    "cloudinary": "^2.9.0",
     "jose": "^6.2.0",
     "next": "16.1.6",
     "react": "19.2.3",

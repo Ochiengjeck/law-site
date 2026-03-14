@@ -6,7 +6,7 @@ export default function MediaCopyButton({ url }: { url: string }) {
   const [copied, setCopied] = useState(false);
 
   const copy = async () => {
-    const fullUrl = window.location.origin + url;
+    const fullUrl = url.startsWith("http") ? url : window.location.origin + url;
     try {
       await navigator.clipboard.writeText(fullUrl);
     } catch {
