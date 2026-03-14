@@ -126,7 +126,7 @@ export default function UserForm({ user, currentUserId }: Props) {
       </div>
 
       {/* Change password (edit mode only) */}
-      {user && pwAction && (
+      {user && (
         <div className="bg-white border border-gray-200 overflow-hidden">
           <div className="px-6 py-4 border-b border-gray-100 bg-navy/[0.02]">
             <h2 className="font-semibold text-navy text-sm">Change Password</h2>
