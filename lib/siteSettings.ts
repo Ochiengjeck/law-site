@@ -3,6 +3,12 @@ import { prisma } from "@/lib/prisma";
 const DEFAULTS: Record<string, string> = {
   // Brand identity
   "site.logoUrl": "",
+  // Theme colors
+  "theme.navy":      "#1B3A6B",
+  "theme.navyDark":  "#0f2548",
+  "theme.gold":      "#C9A84C",
+  "theme.goldDark":  "#b8953e",
+  "theme.lightGray": "#F5F7FA",
   "site.iconUrl": "",
 
   // Home page

@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { DEFAULTS } from "@/lib/siteSettings";
 import { updateSettings } from "./actions";
 import ImageUpload from "@/components/admin/ImageUpload";
+import ColorField from "@/components/admin/ColorField";
 import SubmitButton from "@/components/admin/SubmitButton";
 
 const TABS = [
@@ -212,6 +213,53 @@ export default async function SettingsPage({
                     No custom icon uploaded — the default Next.js favicon is used.
                   </p>
                 )}
+              </Section>
+
+              <Section
+                title="Theme Colors"
+                description="Colors used throughout the entire site — admin panel and public pages. Changes apply immediately on save."
+              >
+                <div className="grid grid-cols-2 gap-5">
+                  <ColorField
+                    name="theme.navy"
+                    label="Primary Color"
+                    description="Main backgrounds, headings, nav bar, buttons"
+                    defaultValue={s["theme.navy"]}
+                    originalDefault="#1B3A6B"
+                  />
+                  <ColorField
+                    name="theme.navyDark"
+                    label="Primary Dark"
+                    description="Footer, hero overlays, active/hover states of primary"
+                    defaultValue={s["theme.navyDark"]}
+                    originalDefault="#0f2548"
+                  />
+                  <ColorField
+                    name="theme.gold"
+                    label="Accent Color"
+                    description="Gold highlights, badges, underlines, CTA buttons"
+                    defaultValue={s["theme.gold"]}
+                    originalDefault="#C9A84C"
+                  />
+                  <ColorField
+                    name="theme.goldDark"
+                    label="Accent Dark"
+                    description="Hover/active state of accent elements"
+                    defaultValue={s["theme.goldDark"]}
+                    originalDefault="#b8953e"
+                  />
+                  <ColorField
+                    name="theme.lightGray"
+                    label="Page Background"
+                    description="Alternating section backgrounds, admin dashboard background"
+                    defaultValue={s["theme.lightGray"]}
+                    originalDefault="#F5F7FA"
+                  />
+                </div>
+                <div className="mt-3 bg-amber-50 border border-amber-200 p-3 text-xs text-amber-700">
+                  ⚠ Changing the Primary or Accent colors affects both the admin panel and the live site.
+                  Ensure sufficient contrast for accessibility.
+                </div>
               </Section>
             </>
           )}

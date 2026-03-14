@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const links = [
@@ -18,6 +17,7 @@ interface Props {
 export default function NavbarClient({ logoUrl }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [logoError, setLogoError] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -33,13 +33,13 @@ export default function NavbarClient({ logoUrl }: Props) {
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center">
-          {logoUrl ? (
-            <Image
+          {logoUrl && !logoError ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
               src={logoUrl}
               alt="SW Law LLP"
-              width={160}
-              height={48}
-              className="h-10 w-auto object-contain"
+              className="h-14 w-auto object-contain"
+              onError={() => setLogoError(true)}
             />
           ) : (
             <span className="flex flex-col leading-tight">
