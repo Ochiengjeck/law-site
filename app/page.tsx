@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import HeroSection from "@/components/HeroSection";
 import { prisma } from "@/lib/prisma";
 import { getPageSettings } from "@/lib/siteSettings";
 
@@ -20,135 +21,126 @@ export default async function Home() {
     }),
   ]);
 
-  const [heroLine1, heroLine2] = s["hero.title"].split("\n");
+  const [heroLine1] = s["hero.title"].split("\n");
   const [aboutLine1, aboutLine2] = s["about.title"].split("\n");
   const stats = [1, 2, 3, 4].map((i) => ({
     value: s[`stat.${i}.value`] ?? "",
     label: s[`stat.${i}.label`] ?? "",
   }));
 
+  const [featuredPost, ...sidePosts] = recentPosts;
+
   return (
     <>
       <Navbar />
       <main>
-        {/* Hero */}
-        <section className="relative min-h-screen flex items-center">
-          <Image
-            src={s["hero.imageUrl"]}
-            alt="Hero background"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/75 to-navy/20" />
-          <div className="relative z-10 max-w-6xl mx-auto px-6 pt-20 w-full">
-            <span className="inline-block bg-gold/20 border border-gold/60 text-gold text-xs tracking-widest uppercase px-4 py-2 rounded-full mb-6 font-medium">
-              {s["hero.badge"]}
-            </span>
-            <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6 max-w-3xl">
-              {heroLine1}
-              {heroLine2 && (
-                <>
-                  <br />
-                  <span className="text-gold">{heroLine2}</span>
-                </>
-              )}
-            </h1>
-            <p className="text-lg text-white/75 max-w-xl mb-10 leading-relaxed">
-              {s["hero.subtitle"]}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/contact"
-                className="bg-gold text-navy font-semibold px-8 py-4 rounded hover:bg-gold-dark transition-colors inline-block text-center"
-              >
-                {s["hero.cta1"]}
-              </Link>
-              <Link
-                href="/services"
-                className="border border-white/50 text-white font-semibold px-8 py-4 rounded hover:bg-white/10 transition-colors inline-block text-center"
-              >
-                {s["hero.cta2"]}
-              </Link>
-            </div>
-          </div>
-        </section>
 
-        {/* Stats bar */}
-        <section className="bg-white border-b border-gray-100 py-10 px-6">
-          <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <p className="text-3xl font-bold text-navy">{stat.value}</p>
-                <p className="text-sm text-gray-500 mt-1 uppercase tracking-wide">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
+        {/* ─── Hero ─────────────────────────────────────────────────── */}
+        <HeroSection
+          imageUrl={s["hero.imageUrl"]}
+          badge={s["hero.badge"]}
+          line1={heroLine1}
+          typingWords={services.map((sv) => sv.title)}
+          subtitle={s["hero.subtitle"]}
+          cta1={s["hero.cta1"]}
+          cta2={s["hero.cta2"]}
+          stats={stats}
+        />
 
-        {/* About split */}
-        <section className="py-24 px-6 bg-light-gray">
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-            <div>
-              <p className="text-gold text-xs tracking-widest uppercase mb-4 font-medium">
-                About the Firm
-              </p>
-              <h2 className="text-4xl font-bold text-navy mb-6 leading-tight">
-                {aboutLine1}
-                {aboutLine2 && (
-                  <>
-                    <br />
-                    {aboutLine2}
-                  </>
-                )}
-              </h2>
-              <p className="text-gray-600 text-lg leading-relaxed mb-5">
-                {s["about.text1"]}
-              </p>
-              <p className="text-gray-500 leading-relaxed mb-8">{s["about.text2"]}</p>
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 text-navy font-semibold border-b-2 border-gold pb-0.5 hover:text-gold transition-colors"
-              >
-                Learn more about our firm →
-              </Link>
-            </div>
+        {/* ─── About ────────────────────────────────────────────────── */}
+        <section className="py-16 px-6 bg-light-gray border-t-4 border-gold">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             <div className="relative">
-              <div className="relative h-96 rounded-2xl overflow-hidden ring-4 ring-gold/25">
-                <Image
-                  src={s["about.imageUrl"]}
-                  alt="About SW Law LLP"
-                  fill
-                  className="object-cover"
-                />
+              {/* Decorative quote mark */}
+              <div className="absolute -top-8 -left-4 text-[10rem] leading-none text-gold/10 font-black select-none pointer-events-none">
+                &ldquo;
               </div>
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gold/15 rounded-2xl -z-10" />
-              <div className="absolute -top-4 -right-4 w-20 h-20 bg-navy/10 rounded-2xl -z-10" />
+
+              {/* Rotated section label */}
+              <div className="flex items-start gap-6">
+                <span
+                  className="hidden md:block text-gold text-xs tracking-[0.3em] uppercase font-medium shrink-0 mt-1"
+                  style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+                >
+                  About the Firm
+                </span>
+
+                <div>
+                  <h2 className="text-3xl md:text-4xl font-black text-navy mb-6 leading-tight">
+                    {aboutLine1}
+                    {aboutLine2 && (
+                      <>
+                        <br />
+                        {aboutLine2}
+                      </>
+                    )}
+                  </h2>
+                  <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                    {s["about.text1"]}
+                  </p>
+                  <hr className="border-none h-px bg-gold/40 mb-6" />
+                  <p className="text-gray-500 leading-relaxed mb-10">{s["about.text2"]}</p>
+                  <Link
+                    href="/about"
+                    className="inline-flex items-center gap-3 text-navy font-bold text-sm tracking-wide border-b-2 border-gold pb-1 hover:text-gold transition-colors group"
+                  >
+                    Learn more about our firm
+                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Image with architectural border treatment */}
+            <div className="relative">
+              <div className="border-l-4 border-gold pl-4">
+                <div className="relative h-72 overflow-hidden">
+                  <Image
+                    src={s["about.imageUrl"]}
+                    alt="About SW Law LLP"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+              {/* Offset decorative block */}
+              <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-gold/10 -z-10" />
             </div>
           </div>
         </section>
 
-        {/* Services */}
+        {/* ─── Services ─────────────────────────────────────────────── */}
         {services.length > 0 && (
-          <section className="py-24 px-6 bg-white">
+          <section className="py-16 px-6 bg-white">
             <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-14">
-                <p className="text-gold text-xs tracking-widest uppercase mb-3 font-medium">
-                  What We Do
-                </p>
-                <h2 className="text-4xl font-bold text-navy mb-4">Practice Areas</h2>
-                <p className="text-gray-500 max-w-xl mx-auto">
-                  Specialised legal services delivered by sector experts
-                </p>
+              <div className="flex items-end justify-between mb-8">
+                <div>
+                  <p className="text-gold text-xs tracking-[0.25em] uppercase mb-3 font-medium">
+                    What We Do
+                  </p>
+                  <h2 className="text-3xl md:text-4xl font-black text-navy leading-tight">
+                    Practice Areas
+                  </h2>
+                </div>
+                <Link
+                  href="/services"
+                  className="hidden md:inline-flex items-center gap-2 text-sm text-navy font-semibold border-b border-navy/30 pb-0.5 hover:border-gold hover:text-gold transition-colors group"
+                >
+                  View all
+                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
               </div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {services.map((service) => (
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                {services.map((service, i) => (
                   <Link
                     key={service.id}
                     href={`/services${service.slug ? `#${service.slug}` : ""}`}
-                    className="group relative h-72 rounded-xl overflow-hidden block"
+                    className="group relative h-64 overflow-hidden block border border-white/5"
                   >
                     <Image
                       src={
@@ -157,136 +149,207 @@ export default async function Home() {
                       }
                       alt={service.title}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-dark via-navy/50 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-5">
-                      <h3 className="text-white font-bold text-sm mb-1.5 group-hover:text-gold transition-colors leading-snug">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-navy-dark/70 to-transparent" />
+
+                    {/* Large pale numeral */}
+                    <span className="absolute top-4 right-4 text-5xl font-black text-gold/20 select-none leading-none">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+
+                    <div className="absolute bottom-0 left-0 right-0 p-4">
+                      <h3 className="text-white font-bold text-base mb-1.5 leading-snug">
                         {service.title}
                       </h3>
-                      <p className="text-white/65 text-xs leading-relaxed line-clamp-2">
+                      {/* Animated gold underline */}
+                      <div className="w-0 group-hover:w-full h-px bg-gold transition-all duration-500 mb-2" />
+                      <p className="text-white/60 text-xs leading-relaxed line-clamp-2">
                         {service.description}
                       </p>
                     </div>
                   </Link>
                 ))}
               </div>
-              <div className="text-center mt-12">
+
+              <div className="text-center mt-10 md:hidden">
                 <Link
                   href="/services"
-                  className="text-navy font-semibold border-2 border-navy px-8 py-3 rounded hover:bg-navy hover:text-white transition-colors inline-block"
+                  className="text-navy font-semibold border-b-2 border-gold pb-0.5 hover:text-gold transition-colors text-sm tracking-wide"
                 >
-                  View All Services
+                  View All Services →
                 </Link>
               </div>
             </div>
           </section>
         )}
 
-        {/* Partners */}
+        {/* ─── Partners ─────────────────────────────────────────────── */}
         {partners.length > 0 && (
-          <section className="py-24 px-6 bg-navy">
+          <section className="py-16 px-6 bg-navy">
             <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-14">
-                <p className="text-gold text-xs tracking-widest uppercase mb-3 font-medium">
+              <div className="mb-10">
+                <p className="text-gold text-xs tracking-[0.25em] uppercase mb-3 font-medium">
                   Our Team
                 </p>
-                <h2 className="text-4xl font-bold text-white mb-4">Meet Our Partners</h2>
-                <p className="text-gray-300 max-w-xl mx-auto">
-                  Seasoned legal professionals with deep sector expertise
-                </p>
+                <h2 className="text-3xl md:text-4xl font-black text-white leading-tight">
+                  Meet Our Partners
+                </h2>
               </div>
-              <div className="grid md:grid-cols-2 gap-10 max-w-3xl mx-auto">
+
+              <div className="grid md:grid-cols-2 gap-6">
                 {partners.map((partner) => (
-                  <div key={partner.id} className="text-center">
-                    <div className="relative w-36 h-36 rounded-full overflow-hidden mx-auto mb-5 ring-4 ring-gold/40">
+                  <div
+                    key={partner.id}
+                    className="flex border border-white/10 hover:border-gold/30 transition-colors duration-300 group"
+                  >
+                    {/* Portrait image */}
+                    <div className="relative w-32 shrink-0 overflow-hidden">
                       <Image
                         src={
                           partner.imageUrl ||
-                          `https://picsum.photos/seed/sw-partner-${partner.id}/300/300`
+                          `https://picsum.photos/seed/sw-partner-${partner.id}/300/400`
                         }
                         alt={partner.name}
                         fill
-                        className="object-cover"
+                        className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
-                    <h3 className="text-xl font-bold text-white">{partner.name}</h3>
-                    <p className="text-gold text-sm font-medium mt-1 mb-2">{partner.role}</p>
-                    <p className="text-gray-400 text-sm">
-                      {partner.expertise.split("\n")[0]}
-                    </p>
+
+                    {/* Gold vertical divider */}
+                    <div className="w-px bg-gold/30 shrink-0 mx-4 self-stretch" />
+
+                    {/* Text */}
+                    <div className="py-5 pr-5 flex flex-col justify-center">
+                      <h3 className="text-xl font-black text-white mb-1">{partner.name}</h3>
+                      <p className="text-gold text-xs tracking-widest uppercase font-medium mb-4">
+                        {partner.role}
+                      </p>
+                      <p className="text-gray-400 text-sm leading-relaxed line-clamp-3">
+                        {partner.expertise.split("\n")[0]}
+                      </p>
+                    </div>
                   </div>
                 ))}
               </div>
-              <div className="text-center mt-12">
+
+              <div className="mt-12">
                 <Link
                   href="/partners"
-                  className="border border-gold text-gold px-8 py-3 rounded hover:bg-gold hover:text-navy transition-colors font-semibold inline-block"
+                  className="inline-flex items-center gap-2 border border-gold text-gold px-6 py-2.5 text-sm font-semibold tracking-wide hover:bg-gold hover:text-navy transition-colors group"
                 >
-                  Meet the Team
+                  Meet the Full Team
+                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
                 </Link>
               </div>
             </div>
           </section>
         )}
 
-        {/* Blog preview */}
+        {/* ─── Blog Preview ─────────────────────────────────────────── */}
         {recentPosts.length > 0 && (
-          <section className="py-24 px-6 bg-light-gray">
+          <section className="py-16 px-6 bg-light-gray">
             <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-14">
-                <p className="text-gold text-xs tracking-widest uppercase mb-3 font-medium">
-                  Thought Leadership
-                </p>
-                <h2 className="text-4xl font-bold text-navy mb-4">Latest Insights</h2>
-                <p className="text-gray-500 max-w-xl mx-auto">
-                  Commentary and analysis from the SW Law LLP team
-                </p>
+              <div className="flex items-end justify-between mb-8">
+                <div>
+                  <p className="text-gold text-xs tracking-[0.25em] uppercase mb-3 font-medium">
+                    Thought Leadership
+                  </p>
+                  <h2 className="text-3xl md:text-4xl font-black text-navy leading-tight">
+                    Latest Insights
+                  </h2>
+                </div>
+                <Link
+                  href="/blog"
+                  className="hidden md:inline-flex items-center gap-2 text-sm text-navy font-semibold border-b border-navy/30 pb-0.5 hover:border-gold hover:text-gold transition-colors group"
+                >
+                  All insights
+                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
               </div>
-              <div className="grid md:grid-cols-3 gap-6">
-                {recentPosts.map((post) => (
+
+              <div className="grid md:grid-cols-3 gap-4">
+                {/* Featured post — spans 2 columns */}
+                {featuredPost && (
                   <Link
-                    key={post.id}
-                    href={`/blog/${post.slug}`}
-                    className="bg-white rounded-xl overflow-hidden hover:shadow-lg transition-shadow group border border-gray-100"
+                    href={`/blog/${featuredPost.slug}`}
+                    className="md:col-span-2 bg-white border-l-4 border-gold overflow-hidden hover:-translate-y-0.5 transition-transform duration-300 group block"
                   >
                     <div className="relative h-48 overflow-hidden">
                       <Image
-                        src={
-                          post.imageUrl ||
-                          `https://picsum.photos/seed/${post.slug}/600/400`
-                        }
-                        alt={post.title}
+                        src={featuredPost.imageUrl || `https://picsum.photos/seed/${featuredPost.slug}/800/500`}
+                        alt={featuredPost.title}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
-                    <div className="p-6">
+                    <div className="p-5">
                       <p className="text-xs text-gray-400 mb-3">
-                        {new Date(post.createdAt).toLocaleDateString("en-KE", {
+                        <span className="text-gold">•</span>{" "}
+                        {new Date(featuredPost.createdAt).toLocaleDateString("en-KE", {
                           day: "numeric",
                           month: "long",
                           year: "numeric",
                         })}{" "}
-                        &middot; {post.author}
+                        &middot; {featuredPost.author}
                       </p>
-                      <h3 className="text-navy font-bold mb-2 group-hover:text-gold transition-colors line-clamp-2 leading-snug">
-                        {post.title}
+                      <h3 className="text-navy font-black text-lg mb-3 group-hover:text-gold transition-colors leading-snug line-clamp-2">
+                        {featuredPost.title}
                       </h3>
-                      {post.excerpt && (
-                        <p className="text-gray-500 text-sm leading-relaxed line-clamp-2">
-                          {post.excerpt}
+                      {featuredPost.excerpt && (
+                        <p className="text-gray-500 text-sm leading-relaxed line-clamp-2 mb-4">
+                          {featuredPost.excerpt}
                         </p>
                       )}
-                      <p className="text-gold text-sm font-medium mt-4">Read more →</p>
+                      <span className="text-gold text-sm font-semibold tracking-wide">Read more →</span>
                     </div>
                   </Link>
-                ))}
+                )}
+
+                {/* Side stack — 2 smaller posts */}
+                {sidePosts.length > 0 && (
+                  <div className="flex flex-col gap-4">
+                    {sidePosts.map((post) => (
+                      <Link
+                        key={post.id}
+                        href={`/blog/${post.slug}`}
+                        className="bg-white overflow-hidden hover:-translate-y-0.5 transition-transform duration-300 group flex-1 flex flex-col block"
+                      >
+                        <div className="relative h-28 overflow-hidden">
+                          <Image
+                            src={post.imageUrl || `https://picsum.photos/seed/${post.slug}/600/400`}
+                            alt={post.title}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                        </div>
+                        <div className="p-4 flex-1">
+                          <p className="text-xs text-gray-400 mb-2">
+                            <span className="text-gold">•</span>{" "}
+                            {new Date(post.createdAt).toLocaleDateString("en-KE", {
+                              day: "numeric",
+                              month: "long",
+                              year: "numeric",
+                            })}
+                          </p>
+                          <h3 className="text-navy font-bold text-sm group-hover:text-gold transition-colors leading-snug line-clamp-2">
+                            {post.title}
+                          </h3>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
-              <div className="text-center mt-10">
+
+              <div className="text-center mt-10 md:hidden">
                 <Link
                   href="/blog"
-                  className="text-navy font-semibold border-b-2 border-gold pb-0.5 hover:text-gold transition-colors"
+                  className="text-navy font-semibold border-b-2 border-gold pb-0.5 hover:text-gold transition-colors text-sm tracking-wide"
                 >
                   View all insights →
                 </Link>
@@ -295,26 +358,31 @@ export default async function Home() {
           </section>
         )}
 
-        {/* CTA */}
-        <section className="relative py-32 px-6">
+        {/* ─── CTA ──────────────────────────────────────────────────── */}
+        <section className="relative py-20 px-6">
           <Image
             src={s["cta.imageUrl"]}
             alt="CTA background"
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-navy/80" />
-          <div className="relative z-10 max-w-2xl mx-auto text-center text-white">
-            <h2 className="text-4xl font-bold mb-5">{s["cta.title"]}</h2>
-            <p className="text-white/70 text-lg mb-10 leading-relaxed">{s["cta.subtitle"]}</p>
+          <div className="absolute inset-0 bg-gradient-to-br from-navy-dark/96 to-navy/88" />
+          <div className="relative z-10 max-w-2xl mx-auto text-center text-white border border-white/20 p-8 md:p-12">
+            {/* Gold rule above */}
+            <div className="w-12 h-px bg-gold mx-auto mb-5" />
+            <h2 className="text-3xl md:text-4xl font-black mb-5 leading-tight">{s["cta.title"]}</h2>
+            {/* Gold rule below heading */}
+            <div className="w-12 h-px bg-gold mx-auto mb-5" />
+            <p className="text-white/70 text-lg mb-8 leading-relaxed">{s["cta.subtitle"]}</p>
             <Link
               href="/contact"
-              className="bg-gold text-navy font-semibold px-10 py-4 rounded hover:bg-gold-dark transition-colors inline-block"
+              className="bg-gold text-navy font-bold px-12 py-4 text-sm tracking-widest uppercase hover:bg-gold-dark transition-colors inline-block"
             >
               Get in Touch
             </Link>
           </div>
         </section>
+
       </main>
       <Footer />
     </>
