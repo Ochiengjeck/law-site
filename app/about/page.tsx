@@ -9,7 +9,7 @@ import { getPageSettings } from "@/lib/siteSettings";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn about SW Law LLP — our philosophy, maritime expertise, and commitment to the Blue Economy.",
+    "Learn about SW Law Advocates LLP — our philosophy, maritime expertise, and commitment to the Blue Economy.",
 };
 
 export default async function AboutPage() {
@@ -62,7 +62,7 @@ export default async function AboutPage() {
                 <div className="relative h-72 overflow-hidden">
                   <Image
                     src={s["mission.imageUrl"]}
-                    alt="SW Law LLP office"
+                    alt="SW Law Advocates LLP office"
                     fill
                     className="object-cover"
                   />

@@ -1,16 +1,25 @@
 import Link from "next/link";
+import { getPageSettings } from "@/lib/siteSettings";
 
-export default function Footer() {
+export default async function Footer() {
+  const s = await getPageSettings("site");
+  const logoUrl = s["logoUrl"];
+
   return (
     <footer className="bg-navy-dark text-white">
       <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-4 gap-10">
         <div className="md:col-span-2">
-          <h3 className="text-xl font-bold mb-1">SW Law LLP</h3>
-          <p className="text-gold text-xs tracking-widest uppercase mb-5">
-            Legal Consultancy
-          </p>
+          {logoUrl && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={logoUrl}
+              alt="SW Law Advocates LLP"
+              className="h-16 w-auto object-contain mb-4"
+            />
+          )}
+          <h3 className="text-xl font-bold mb-4">SW Law Advocates LLP</h3>
           <p className="text-gray-400 text-sm leading-relaxed max-w-xs mb-6">
-            Premier legal consultancy specialising in maritime law, ESG
+            Premier law firm specialising in maritime law, ESG
             compliance, corporate and commercial law in Nairobi, Kenya.
           </p>
           <p className="text-gray-500 text-xs">
@@ -96,7 +105,7 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-6xl mx-auto px-6 py-5 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
           <p>
-            &copy; {new Date().getFullYear()} SW Law LLP. All rights reserved.
+            &copy; {new Date().getFullYear()} SW Law Advocates LLP. All rights reserved.
           </p>
           <p className="mt-2 md:mt-0">Nairobi, Kenya &middot; Advocates of the High Court</p>
         </div>

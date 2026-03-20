@@ -111,7 +111,7 @@ export default async function BlogPostPage({
               href="/contact"
               className="bg-gold text-navy font-bold px-8 py-3 text-xs tracking-widest uppercase hover:bg-gold-dark transition-colors inline-block"
             >
-              Contact SW Law LLP
+              Contact SW Law Advocates LLP
             </Link>
           </div>
         </section>

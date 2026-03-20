@@ -99,7 +99,7 @@ export default async function Home() {
                 <div className="relative h-72 overflow-hidden">
                   <Image
                     src={s["about.imageUrl"]}
-                    alt="About SW Law LLP"
+                    alt="About SW Law Advocates LLP"
                     fill
                     className="object-cover"
                   />

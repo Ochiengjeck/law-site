@@ -10,7 +10,7 @@ import { getPageSettings } from "@/lib/siteSettings";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Explore SW Law LLP's legal services: Maritime & Shipping Law, ESG Compliance, Corporate Law, Conveyancing, and more.",
+    "Explore SW Law Advocates LLP's legal services: Maritime & Shipping Law, ESG Compliance, Corporate Law, Conveyancing, and more.",
 };
 
 export default async function ServicesPage() {

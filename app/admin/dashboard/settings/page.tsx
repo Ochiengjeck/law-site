@@ -185,7 +185,7 @@ export default async function SettingsPage({
                 />
                 {s["site.logoUrl"] ? (
                   <p className="text-xs text-gray-400">
-                    When a logo is uploaded it replaces the text &ldquo;SW Law LLP&rdquo; in the navbar. Remove the URL to revert to text.
+                    When a logo is uploaded it replaces the text &ldquo;SW Law Advocates LLP&rdquo; in the navbar. Remove the URL to revert to text.
                   </p>
                 ) : (
                   <p className="text-xs text-gray-400">

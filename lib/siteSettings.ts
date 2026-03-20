@@ -4,8 +4,8 @@ const DEFAULTS: Record<string, string> = {
   // Brand identity
   "site.logoUrl": "",
   // Theme colors
-  "theme.navy":      "#1B3A6B",
-  "theme.navyDark":  "#0f2548",
+  "theme.navy":      "#0CB8CC",
+  "theme.navyDark":  "#097A8C",
   "theme.gold":      "#C9A84C",
   "theme.goldDark":  "#b8953e",
   "theme.lightGray": "#F5F7FA",
@@ -15,7 +15,7 @@ const DEFAULTS: Record<string, string> = {
   "home.hero.badge": "Maritime · ESG · Corporate · Property",
   "home.hero.title": "Principled Legal Counsel.\nSustainable Futures.",
   "home.hero.subtitle":
-    "SW Law LLP is a premier legal consultancy delivering expert counsel in maritime law, ESG compliance, and corporate practice — rooted in integrity and the Blue Economy.",
+    "SW Law Advocates LLP is a premier legal consultancy delivering expert counsel in maritime law, ESG compliance, and corporate practice — rooted in integrity and the Blue Economy.",
   "home.hero.imageUrl": "https://picsum.photos/seed/sw-hero/1920/1080",
   "home.hero.cta1": "Request a Consultation",
   "home.hero.cta2": "Our Services",
@@ -29,7 +29,7 @@ const DEFAULTS: Record<string, string> = {
   "home.stat.4.label": "Kenya",
   "home.about.title": "Built on Integrity.\nDriven by Purpose.",
   "home.about.text1":
-    "SW Law LLP places the Blue Economy at the forefront of legal practice, advising clients at the intersection of maritime commerce, environmental stewardship, and corporate governance.",
+    "SW Law Advocates LLP places the Blue Economy at the forefront of legal practice, advising clients at the intersection of maritime commerce, environmental stewardship, and corporate governance.",
   "home.about.text2":
     "Our practice is defined by principled counsel and a deep commitment to sustainable development — for our clients, and for Kenya's future.",
   "home.about.imageUrl": "https://picsum.photos/seed/sw-about/800/600",
@@ -41,11 +41,11 @@ const DEFAULTS: Record<string, string> = {
   // About page
   "about.hero.title": "A Practice Built on Principle",
   "about.hero.subtitle":
-    "SW Law LLP is a Nairobi-based legal consultancy committed to delivering principled, expert legal services across maritime law, ESG compliance, corporate practice, and property law.",
+    "SW Law Advocates LLP is a Nairobi-based legal consultancy committed to delivering principled, expert legal services across maritime law, ESG compliance, corporate practice, and property law.",
   "about.hero.imageUrl": "https://picsum.photos/seed/sw-about-hero/1920/700",
   "about.mission.title": "Multi-disciplinary counsel for a complex world",
   "about.mission.text1":
-    "At SW Law LLP, we understand that legal challenges rarely exist in isolation. Commercial decisions, environmental obligations, and regulatory requirements are deeply intertwined — and our lawyers are trained to navigate this complexity.",
+    "At SW Law Advocates LLP, we understand that legal challenges rarely exist in isolation. Commercial decisions, environmental obligations, and regulatory requirements are deeply intertwined — and our lawyers are trained to navigate this complexity.",
   "about.mission.text2":
     "We bring together specialists in maritime law, ESG, corporate governance, and property law under one roof, enabling us to provide cohesive, multi-disciplinary counsel to our clients.",
   "about.mission.imageUrl": "https://picsum.photos/seed/sw-about/800/600",
@@ -86,19 +86,19 @@ const DEFAULTS: Record<string, string> = {
   // Services page
   "services.hero.title": "Comprehensive Legal Services",
   "services.hero.subtitle":
-    "SW Law LLP offers a broad range of legal services, anchored by deep expertise in maritime law and ESG compliance, and extending to corporate, property, and family matters.",
+    "SW Law Advocates LLP offers a broad range of legal services, anchored by deep expertise in maritime law and ESG compliance, and extending to corporate, property, and family matters.",
   "services.hero.imageUrl": "https://picsum.photos/seed/sw-services-hero/1920/700",
 
   // Partners page
   "partners.hero.title": "Meet Our Partners",
   "partners.hero.subtitle":
-    "SW Law LLP is led by experienced legal professionals who combine sector expertise with a commitment to principled, client-centred practice.",
+    "SW Law Advocates LLP is led by experienced legal professionals who combine sector expertise with a commitment to principled, client-centred practice.",
   "partners.hero.imageUrl": "https://picsum.photos/seed/sw-partners-hero/1920/700",
 
   // Blog page
   "blog.hero.title": "Legal Insights",
   "blog.hero.subtitle":
-    "Commentary and analysis from the SW Law LLP team on maritime law, ESG compliance, regulatory developments, and legal trends in Kenya.",
+    "Commentary and analysis from the SW Law Advocates LLP team on maritime law, ESG compliance, regulatory developments, and legal trends in Kenya.",
   "blog.hero.imageUrl": "https://picsum.photos/seed/sw-blog-hero/1920/700",
 
   // Contact page

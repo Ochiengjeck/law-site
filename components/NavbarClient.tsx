@@ -28,7 +28,7 @@ export default function NavbarClient({ logoUrl }: Props) {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-navy shadow-lg" : "bg-transparent"
+        scrolled ? "bg-white shadow-md" : "bg-transparent"
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -37,14 +37,15 @@ export default function NavbarClient({ logoUrl }: Props) {
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={logoUrl}
-              alt="SW Law LLP"
-              className="h-14 w-auto object-contain"
+              alt="SW Law Advocates LLP"
+              className="h-20 w-auto object-contain"
               onError={() => setLogoError(true)}
             />
           ) : (
             <span className="flex flex-col leading-tight">
-              <span className="text-xl font-bold tracking-wide text-white">SW Law LLP</span>
-              <span className="text-gold text-xs tracking-widest uppercase">Legal Consultancy</span>
+              <span className={`text-xl font-bold tracking-wide ${scrolled ? "text-navy" : "text-white"}`}>
+                SW Law Advocates LLP
+              </span>
             </span>
           )}
         </Link>
@@ -52,7 +53,11 @@ export default function NavbarClient({ logoUrl }: Props) {
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-8 text-sm font-medium">
           {links.map((l) => (
-            <Link key={l.href} href={l.href} className="relative text-white/90 hover:text-white group">
+            <Link
+              key={l.href}
+              href={l.href}
+              className={`relative group ${scrolled ? "text-gray-700 hover:text-navy" : "text-white/90 hover:text-white"}`}
+            >
               {l.label}
               <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full" />
             </Link>
@@ -67,7 +72,7 @@ export default function NavbarClient({ logoUrl }: Props) {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden text-white"
+          className={`md:hidden ${scrolled ? "text-navy" : "text-white"}`}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
@@ -83,13 +88,15 @@ export default function NavbarClient({ logoUrl }: Props) {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-navy-dark px-6 py-4 flex flex-col gap-4 text-sm font-medium border-t border-white/10">
+        <div className={`md:hidden px-6 py-4 flex flex-col gap-4 text-sm font-medium border-t ${
+          scrolled ? "bg-white border-gray-100" : "bg-navy-dark border-white/10"
+        }`}>
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
               onClick={() => setMenuOpen(false)}
-              className="text-white/90 hover:text-gold transition-colors"
+              className={`transition-colors hover:text-gold ${scrolled ? "text-gray-700" : "text-white/90"}`}
             >
               {l.label}
             </Link>

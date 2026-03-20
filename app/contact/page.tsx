@@ -8,7 +8,7 @@ import { getPageSettings } from "@/lib/siteSettings";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Submit a legal enquiry to SW Law LLP. We will respond promptly to discuss your needs.",
+    "Submit a legal enquiry to SW Law Advocates LLP. We will respond promptly to discuss your needs.",
 };
 
 export default async function ContactPage() {
@@ -31,7 +31,7 @@ export default async function ContactPage() {
                 </p>
               </div>
 
-              <h1 className="text-3xl font-black text-navy mb-2">Contact SW Law LLP</h1>
+              <h1 className="text-3xl font-black text-navy mb-2">Contact SW Law Advocates LLP</h1>
               <p className="text-gray-500 mb-8 leading-relaxed text-sm">
                 Submit your enquiry and a member of our team will respond promptly. All
                 communications are treated with strict confidentiality.
@@ -71,7 +71,7 @@ export default async function ContactPage() {
           <div className="relative hidden md:block w-full md:w-5/12 lg:w-1/2">
             <Image
               src={s["imageUrl"]}
-              alt="SW Law LLP office"
+              alt="SW Law Advocates LLP office"
               fill
               className="object-cover"
             />
@@ -79,7 +79,7 @@ export default async function ContactPage() {
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-6 h-px bg-gold" />
                 <p className="text-gold text-xs tracking-[0.4em] uppercase font-medium">
-                  SW Law LLP
+                  SW Law Advocates LLP
                 </p>
                 <div className="w-6 h-px bg-gold" />
               </div>

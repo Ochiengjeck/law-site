@@ -12,7 +12,7 @@ export default async function AdminLoginPage() {
     <div className="min-h-screen bg-light-gray flex items-center justify-center px-4">
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 w-full max-w-sm p-8">
         <div className="text-center mb-8">
-          <h1 className="text-xl font-bold text-navy">SW Law LLP</h1>
+          <h1 className="text-xl font-bold text-navy">SW Law Advocates LLP</h1>
           <p className="text-gold text-xs tracking-widest uppercase mt-1">
             Admin Portal
           </p>
