@@ -10,7 +10,7 @@ import { getPageSettings } from "@/lib/siteSettings";
 export const metadata: Metadata = {
   title: "Partners",
   description:
-    "Meet the partners of SW Law LLP — experienced legal professionals in maritime law, ESG, and corporate practice.",
+    "Meet the partners of SW Law Advocates LLP — experienced legal professionals in maritime law, ESG, and corporate practice.",
 };
 
 export default async function PartnersPage() {

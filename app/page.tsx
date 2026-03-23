@@ -23,10 +23,10 @@ export default async function Home() {
 
   const [heroLine1] = s["hero.title"].split("\n");
   const [aboutLine1, aboutLine2] = s["about.title"].split("\n");
-  const stats = [1, 2, 3, 4].map((i) => ({
-    value: s[`stat.${i}.value`] ?? "",
-    label: s[`stat.${i}.label`] ?? "",
-  }));
+  // const stats = [1, 2, 3, 4].map((i) => ({
+  //   value: s[`stat.${i}.value`] ?? "",
+  //   label: s[`stat.${i}.label`] ?? "",
+  // }));
 
   const [featuredPost, ...sidePosts] = recentPosts;
 
@@ -99,7 +99,7 @@ export default async function Home() {
                 <div className="relative h-72 overflow-hidden">
                   <Image
                     src={s["about.imageUrl"]}
-                    alt="About SW Law LLP"
+                    alt="About SW Law Advocates LLP"
                     fill
                     className="object-cover"
                   />

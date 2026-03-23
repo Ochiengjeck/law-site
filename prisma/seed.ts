@@ -46,7 +46,7 @@ async function main() {
         role: "Managing Partner",
         imageUrl: "",
         bio: [
-          "Faith Sulwe is the founding and Managing Partner of SW Law LLP. With extensive experience in maritime law and the Blue Economy, Faith has built a reputation as one of Kenya's foremost maritime legal practitioners. She advises shipowners, charterers, port operators, and maritime financiers on the full spectrum of maritime legal matters.",
+          "Faith Sulwe is the founding and Managing Partner of SW Law Advocates LLP. With extensive experience in maritime law and the Blue Economy, Faith has built a reputation as one of Kenya's foremost maritime legal practitioners. She advises shipowners, charterers, port operators, and maritime financiers on the full spectrum of maritime legal matters.",
           "Faith's practice is particularly focused on the intersection of maritime commerce and environmental sustainability. She has advised on landmark vessel transactions, complex chartering disputes, and regulatory compliance frameworks for clients operating in Kenya's Indian Ocean waters and beyond.",
           "Faith is a passionate advocate for the Blue Economy as a vehicle for sustainable development in Kenya and across the African continent. She regularly speaks at maritime and ESG conferences and has contributed to policy discussions on Kenya's maritime regulatory framework.",
         ].join("\n\n"),
@@ -68,7 +68,7 @@ async function main() {
         role: "Partner",
         imageUrl: "",
         bio: [
-          "Lillian Waweru is a Partner at SW Law LLP, leading the firm's corporate and ESG practice. She brings deep expertise in corporate advisory, mergers and acquisitions, and the rapidly evolving field of ESG compliance — helping organisations align their legal obligations with sustainable business practice.",
+          "Lillian Waweru is a Partner at SW Law Advocates LLP, leading the firm's corporate and ESG practice. She brings deep expertise in corporate advisory, mergers and acquisitions, and the rapidly evolving field of ESG compliance — helping organisations align their legal obligations with sustainable business practice.",
           "Lillian advises a diverse range of clients including listed companies, private equity funds, and multinational corporations on corporate governance, commercial transactions, and ESG strategy. Her work spans sectors including financial services, energy, and manufacturing.",
           "Recognised for her pragmatic and client-centred approach, Lillian is known for translating complex regulatory requirements into clear, actionable frameworks. She is a sought-after advisor on ESG reporting, stakeholder engagement, and sustainable finance in the Kenyan market.",
         ].join("\n\n"),
@@ -118,7 +118,7 @@ async function main() {
         slug: "esg",
         badge: "Environmental · Social · Governance",
         description:
-          "As ESG obligations become central to business operations and investor expectations, SW Law LLP helps organisations develop robust frameworks that satisfy regulatory requirements, build stakeholder trust, and drive sustainable performance.",
+          "As ESG obligations become central to business operations and investor expectations, SW Law Advocates LLP helps organisations develop robust frameworks that satisfy regulatory requirements, build stakeholder trust, and drive sustainable performance.",
         imageUrl: "",
         items: [
           "ESG strategy development and implementation",
@@ -256,7 +256,7 @@ Marine environmental law continues to evolve rapidly. The IMO's 2030 and 2050 de
 
 **Looking Ahead**
 
-The convergence of maritime law, ESG obligations, and Blue Economy policy creates a complex but navigable legal environment. SW Law LLP's maritime practice is well-positioned to advise clients across the full spectrum of these intersecting areas.
+The convergence of maritime law, ESG obligations, and Blue Economy policy creates a complex but navigable legal environment. SW Law Advocates LLP's maritime practice is well-positioned to advise clients across the full spectrum of these intersecting areas.
 
 For specific advice on how these developments may affect your business, contact our maritime team.`,
       author: "Faith Sulwe",

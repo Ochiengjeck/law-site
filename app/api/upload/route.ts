@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
-import { writeFile, mkdir } from "fs/promises";
-import path from "path";
+import cloudinary from "@/lib/cloudinary";
+import { prisma } from "@/lib/prisma";
 
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
 const MAX_SIZE = 5 * 1024 * 1024; // 5 MB
@@ -34,14 +34,32 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const ext = file.type.split("/")[1].replace("jpeg", "jpg");
-  const filename = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
-  const uploadDir = path.join(process.cwd(), "public", "uploads", category);
-
-  await mkdir(uploadDir, { recursive: true });
-
   const bytes = await file.arrayBuffer();
-  await writeFile(path.join(uploadDir, filename), Buffer.from(bytes));
+  const buffer = Buffer.from(bytes);
 
-  return NextResponse.json({ url: `/uploads/${category}/${filename}` });
+  const result = await new Promise<{ secure_url: string; public_id: string }>(
+    (resolve, reject) => {
+      cloudinary.uploader
+        .upload_stream(
+          { folder: `sw-law/${category}`, resource_type: "image" },
+          (error, res) => {
+            if (error || !res) reject(error ?? new Error("Upload failed"));
+            else resolve(res);
+          }
+        )
+        .end(buffer);
+    }
+  );
+
+  await prisma.media.create({
+    data: {
+      url: result.secure_url,
+      publicId: result.public_id,
+      category,
+      filename: file.name,
+      size: file.size,
+    },
+  });
+
+  return NextResponse.json({ url: result.secure_url });
 }

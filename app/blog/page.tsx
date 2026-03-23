@@ -10,7 +10,7 @@ import { getPageSettings } from "@/lib/siteSettings";
 export const metadata: Metadata = {
   title: "Insights",
   description:
-    "Legal insights and commentary from SW Law LLP on maritime law, ESG compliance, and regulatory developments in Kenya.",
+    "Legal insights and commentary from SW Law Advocates LLP on maritime law, ESG compliance, and regulatory developments in Kenya.",
 };
 
 export default async function BlogPage() {

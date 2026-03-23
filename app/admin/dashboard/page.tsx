@@ -261,7 +261,7 @@ export default async function DashboardPage() {
       <div className="bg-gradient-to-br from-navy to-navy-dark p-6 flex flex-wrap items-center justify-between gap-4">
         <div>
           <p className="text-[10px] text-gold tracking-[0.25em] uppercase font-semibold mb-2">
-            SW Law LLP · Admin Panel
+            SW Law Advocates LLP · Admin Panel
           </p>
           <h1 className="text-2xl font-bold text-white leading-tight">
             {greeting}, Admin.

@@ -1,41 +1,8 @@
-import fs from "fs";
-import path from "path";
+import { prisma } from "@/lib/prisma";
 import { deleteMedia } from "./actions";
 import MediaCopyButton from "@/components/admin/MediaCopyButton";
 
 export const metadata = { title: "Media Library" };
-
-interface MediaFile {
-  name: string;
-  url: string;
-  size: number;
-  category: string;
-  mtime: Date;
-}
-
-function getMediaFiles(): MediaFile[] {
-  const uploadsDir = path.join(process.cwd(), "public/uploads");
-  if (!fs.existsSync(uploadsDir)) return [];
-
-  const results: MediaFile[] = [];
-  const cats = fs.readdirSync(uploadsDir);
-  for (const cat of cats) {
-    const catPath = path.join(uploadsDir, cat);
-    if (!fs.statSync(catPath).isDirectory()) continue;
-    for (const file of fs.readdirSync(catPath)) {
-      const filePath = path.join(catPath, file);
-      const stat = fs.statSync(filePath);
-      results.push({
-        name: file,
-        url: `/uploads/${cat}/${file}`,
-        size: stat.size,
-        category: cat,
-        mtime: stat.mtime,
-      });
-    }
-  }
-  return results.sort((a, b) => b.mtime.getTime() - a.mtime.getTime());
-}
 
 function formatSize(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`;
@@ -51,7 +18,7 @@ export default async function MediaPage({
   searchParams: Promise<{ category?: string }>;
 }) {
   const { category } = await searchParams;
-  const allFiles = getMediaFiles();
+  const allFiles = await prisma.media.findMany({ orderBy: { createdAt: "desc" } });
   const categories = Array.from(new Set(allFiles.map((f) => f.category)));
   const files = category ? allFiles.filter((f) => f.category === category) : allFiles;
 
@@ -104,14 +71,14 @@ export default async function MediaPage({
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
           {files.map((file) => (
-            <div key={file.url} className="bg-white border border-gray-200 overflow-hidden">
+            <div key={file.id} className="bg-white border border-gray-200 overflow-hidden">
               {/* Thumbnail */}
               <div className="aspect-square bg-gray-100 overflow-hidden relative">
-                {isImage(file.name) ? (
+                {isImage(file.filename) ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={file.url}
-                    alt={file.name}
+                    alt={file.filename}
                     className="w-full h-full object-cover"
                   />
                 ) : (
@@ -125,8 +92,8 @@ export default async function MediaPage({
 
               {/* Info */}
               <div className="p-2">
-                <p className="text-xs text-navy font-medium truncate" title={file.name}>
-                  {file.name}
+                <p className="text-xs text-navy font-medium truncate" title={file.filename}>
+                  {file.filename}
                 </p>
                 <div className="flex items-center justify-between mt-0.5">
                   <span className="text-[10px] text-gray-400">{formatSize(file.size)}</span>
@@ -140,7 +107,7 @@ export default async function MediaPage({
                 <form
                   action={async () => {
                     "use server";
-                    await deleteMedia(file.url);
+                    await deleteMedia(file.id);
                   }}
                 >
                   <button

@@ -21,11 +21,11 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: {
-      default: "SW Law LLP – Legal Consultancy",
-      template: "%s | SW Law LLP",
+      default: "SW Law Advocates LLP",
+      template: "%s | SW Law Advocates LLP",
     },
     description:
-      "SW Law LLP is a premier legal consultancy specialising in Maritime & Shipping Law, ESG Compliance, Corporate Law, and Conveyancing in Kenya.",
+      "SW Law Advocates LLP is a premier law firm specialising in Maritime & Shipping Law, ESG Compliance, Corporate Law, and Conveyancing in Kenya.",
     ...(iconUrl && {
       icons: {
         icon: iconUrl,
@@ -45,8 +45,8 @@ export default async function RootLayout({
     where: { key: { in: ["theme.navy", "theme.navyDark", "theme.gold", "theme.goldDark", "theme.lightGray"] } },
   });
   const theme: Record<string, string> = {
-    "theme.navy":      "#1B3A6B",
-    "theme.navyDark":  "#0f2548",
+    "theme.navy":      "#0CB8CC",
+    "theme.navyDark":  "#097A8C",
     "theme.gold":      "#C9A84C",
     "theme.goldDark":  "#b8953e",
     "theme.lightGray": "#F5F7FA",

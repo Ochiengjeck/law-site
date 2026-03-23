@@ -114,13 +114,13 @@ export default function AdminNav({ logoUrl, siteName }: AdminNavProps) {
               onError={() => setLogoError(true)}
             />
             <div>
-              <p className="font-bold text-sm leading-tight">{siteName ?? "SW Law LLP"}</p>
+              <p className="font-bold text-sm leading-tight">{siteName ?? "SW Law Advocates LLP"}</p>
               <p className="text-gold text-[10px] mt-0.5 tracking-wide">Admin Panel</p>
             </div>
           </div>
         ) : (
           <div>
-            <p className="font-bold text-sm">{siteName ?? "SW Law LLP"}</p>
+            <p className="font-bold text-sm">{siteName ?? "SW Law Advocates LLP"}</p>
             <p className="text-gold text-[10px] mt-0.5 tracking-wide">Admin Panel</p>
           </div>
         )}

@@ -67,3 +67,13 @@ model SiteSetting {
   key   String @id
   value String
 }
+
+model Media {
+  id        Int      @id @default(autoincrement())
+  url       String
+  publicId  String   @unique
+  category  String
+  filename  String
+  size      Int
+  createdAt DateTime @default(now())
+}
