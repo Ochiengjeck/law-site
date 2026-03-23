@@ -17,7 +17,7 @@ interface Props {
   subtitle: string;
   cta1: string;
   cta2: string;
-  stats: Stat[];
+  // stats: Stat[];
 }
 
 function useTypewriter(
@@ -67,7 +67,7 @@ export default function HeroSection({
   subtitle,
   cta1,
   cta2,
-  stats,
+  // stats,
 }: Props) {
   const typed = useTypewriter(typingWords);
 
@@ -164,7 +164,7 @@ export default function HeroSection({
         </div>
       </div>
 
-      {/* Stats bar — fused to hero bottom */}
+      {/* Stats bar — fused to hero bottom
       <div className="relative z-10 border-t border-white/10 bg-navy-dark/70 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 py-4 flex flex-wrap items-center justify-around gap-4">
           {stats.map((stat, i) => (
@@ -179,7 +179,7 @@ export default function HeroSection({
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
 
       {/* Scroll indicator */}
       <div className="absolute bottom-20 right-8 hidden md:flex flex-col items-center gap-3">

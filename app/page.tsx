@@ -44,7 +44,7 @@ export default async function Home() {
           subtitle={s["hero.subtitle"]}
           cta1={s["hero.cta1"]}
           cta2={s["hero.cta2"]}
-          stats={stats}
+          // stats={stats}
         />
 
         {/* ─── About ────────────────────────────────────────────────── */}
