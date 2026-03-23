@@ -1,22 +1,7 @@
-import fs from "fs";
-import path from "path";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 
 export const metadata = { title: "Dashboard" };
-
-function countMediaFiles(): number {
-  const uploadsDir = path.join(process.cwd(), "public/uploads");
-  if (!fs.existsSync(uploadsDir)) return 0;
-  let count = 0;
-  for (const cat of fs.readdirSync(uploadsDir)) {
-    const catPath = path.join(uploadsDir, cat);
-    if (fs.statSync(catPath).isDirectory()) {
-      count += fs.readdirSync(catPath).length;
-    }
-  }
-  return count;
-}
 
 function timeAgo(date: Date): string {
   const diff = Date.now() - date.getTime();
@@ -99,7 +84,12 @@ export default async function DashboardPage() {
     prisma.siteSetting.count(),
   ]);
 
-  const mediaCount = countMediaFiles();
+  let mediaCount = 0;
+  try {
+    mediaCount = await prisma.media.count();
+  } catch {
+    // Media table may not exist yet — silent fallback
+  }
 
   const serviceBreakdown = allServiceTypes.reduce<Record<string, number>>(
     (acc, { serviceType }) => {
