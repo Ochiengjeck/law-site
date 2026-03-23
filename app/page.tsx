@@ -23,10 +23,10 @@ export default async function Home() {
 
   const [heroLine1] = s["hero.title"].split("\n");
   const [aboutLine1, aboutLine2] = s["about.title"].split("\n");
-  const stats = [1, 2, 3, 4].map((i) => ({
-    value: s[`stat.${i}.value`] ?? "",
-    label: s[`stat.${i}.label`] ?? "",
-  }));
+  // const stats = [1, 2, 3, 4].map((i) => ({
+  //   value: s[`stat.${i}.value`] ?? "",
+  //   label: s[`stat.${i}.label`] ?? "",
+  // }));
 
   const [featuredPost, ...sidePosts] = recentPosts;
 
@@ -44,7 +44,7 @@ export default async function Home() {
           subtitle={s["hero.subtitle"]}
           cta1={s["hero.cta1"]}
           cta2={s["hero.cta2"]}
-          stats={stats}
+          // stats={stats}
         />
 
         {/* ─── About ────────────────────────────────────────────────── */}

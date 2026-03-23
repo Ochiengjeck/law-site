@@ -27,18 +27,18 @@ export default function NavbarClient({ logoUrl }: Props) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 h-20 transition-all duration-300 ${
         scrolled ? "bg-white shadow-md" : "bg-transparent"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center">
+      <div className="max-w-6xl mx-auto px-6 h-full flex items-center justify-between">
+        <Link href="/" className="h-full flex items-center">
           {logoUrl && !logoError ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={logoUrl}
               alt="SW Law Advocates LLP"
-              className="h-20 w-auto object-contain"
+              className="h-full w-auto object-contain"
               onError={() => setLogoError(true)}
             />
           ) : (
