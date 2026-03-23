@@ -40,7 +40,6 @@ export default async function Home() {
           imageUrl={s["hero.imageUrl"]}
           badge={s["hero.badge"]}
           line1={heroLine1}
-          typingWords={services.map((sv) => sv.title)}
           subtitle={s["hero.subtitle"]}
           cta1={s["hero.cta1"]}
           cta2={s["hero.cta2"]}

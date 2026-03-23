@@ -27,8 +27,19 @@ export default function ImageUpload({ name, defaultValue = "", category, label }
 
     try {
       const res = await fetch("/api/upload", { method: "POST", body: fd });
-      const data = await res.json();
+      const raw = await res.text();
+      let data: { error?: string; url?: string } = {};
+
+      if (raw) {
+        try {
+          data = JSON.parse(raw) as { error?: string; url?: string };
+        } catch {
+          throw new Error("Upload failed: server returned an invalid response");
+        }
+      }
+
       if (!res.ok) throw new Error(data.error ?? "Upload failed");
+      if (!data.url) throw new Error("Upload succeeded but no file URL was returned");
       setUrl(data.url);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Upload failed");
