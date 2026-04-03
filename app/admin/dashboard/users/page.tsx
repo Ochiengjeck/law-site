@@ -28,7 +28,7 @@ export default async function UsersPage() {
         </div>
         <Link
           href="/admin/dashboard/users/new"
-          className="bg-navy text-white text-xs font-semibold px-5 py-2.5 hover:bg-navy-dark transition-colors tracking-widest uppercase"
+          className="bg-navy-dark text-white text-xs font-semibold px-5 py-2.5 hover:opacity-90 transition-opacity tracking-widest uppercase"
         >
           + New User
         </Link>

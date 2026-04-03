@@ -18,11 +18,11 @@ export default async function Footer() {
             />
           )}
           <h3 className="text-xl font-bold mb-4">SW Law Advocates LLP</h3>
-          <p className="text-gray-400 text-sm leading-relaxed max-w-xs mb-6">
+          <p className="text-white/65 text-sm leading-relaxed max-w-xs mb-6">
             Premier law firm specialising in maritime law, ESG
             compliance, corporate and commercial law in Nairobi, Kenya.
           </p>
-          <p className="text-gray-500 text-xs">
+          <p className="text-white/45 text-xs">
             info@swlawllp.co.ke
           </p>
         </div>
@@ -31,7 +31,7 @@ export default async function Footer() {
           <h4 className="font-semibold mb-5 text-gold text-xs tracking-widest uppercase">
             Practice Areas
           </h4>
-          <ul className="space-y-3 text-sm text-gray-400">
+          <ul className="space-y-3 text-sm text-white/65">
             <li>
               <Link
                 href="/services#maritime"
@@ -71,7 +71,7 @@ export default async function Footer() {
           <h4 className="font-semibold mb-5 text-gold text-xs tracking-widest uppercase">
             Firm
           </h4>
-          <ul className="space-y-3 text-sm text-gray-400">
+          <ul className="space-y-3 text-sm text-white/65">
             <li>
               <Link href="/about" className="hover:text-white transition-colors">
                 About Us
@@ -103,7 +103,7 @@ export default async function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="max-w-6xl mx-auto px-6 py-5 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+        <div className="max-w-6xl mx-auto px-6 py-5 flex flex-col md:flex-row justify-between items-center text-xs text-white/45">
           <p>
             &copy; {new Date().getFullYear()} SW Law Advocates LLP. All rights reserved.
           </p>

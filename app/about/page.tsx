@@ -138,7 +138,7 @@ export default async function AboutPage() {
             <div className="mb-8">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-6 h-px bg-gold" />
-                <p className="text-gold text-xs tracking-[0.4em] uppercase font-medium">
+                <p className="text-white/60 text-xs tracking-[0.4em] uppercase font-medium">
                   What We Stand For
                 </p>
               </div>
@@ -150,7 +150,7 @@ export default async function AboutPage() {
                 <div key={value.title} className="border-t-2 border-gold/40 pt-5">
                   <div className="text-2xl mb-3">{value.icon}</div>
                   <h3 className="font-black text-white text-base mb-2">{value.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">{value.description}</p>
+                  <p className="text-white/60 text-sm leading-relaxed">{value.description}</p>
                 </div>
               ))}
             </div>
@@ -170,7 +170,7 @@ export default async function AboutPage() {
             </p>
             <Link
               href="/contact"
-              className="bg-gold text-navy font-bold px-8 py-3 text-xs tracking-widest uppercase hover:bg-gold-dark transition-colors inline-block"
+              className="bg-gold text-gray-900 font-bold px-8 py-3 text-xs tracking-widest uppercase hover:bg-gold-dark transition-colors inline-block"
             >
               Contact Us Today
             </Link>

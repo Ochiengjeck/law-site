@@ -188,7 +188,7 @@ export default async function Home() {
           <section className="py-16 px-6 bg-navy">
             <div className="max-w-6xl mx-auto">
               <div className="mb-10">
-                <p className="text-gold text-xs tracking-[0.25em] uppercase mb-3 font-medium">
+                <p className="text-white/60 text-xs tracking-[0.25em] uppercase mb-3 font-medium">
                   Our Team
                 </p>
                 <h2 className="text-3xl md:text-4xl font-black text-white leading-tight">
@@ -221,10 +221,10 @@ export default async function Home() {
                     {/* Text */}
                     <div className="py-5 pr-5 flex flex-col justify-center">
                       <h3 className="text-xl font-black text-white mb-1">{partner.name}</h3>
-                      <p className="text-gold text-xs tracking-widest uppercase font-medium mb-4">
+                      <p className="text-white/70 text-xs tracking-widest uppercase font-medium mb-4">
                         {partner.role}
                       </p>
-                      <p className="text-gray-400 text-sm leading-relaxed line-clamp-3">
+                      <p className="text-white/55 text-sm leading-relaxed line-clamp-3">
                         {partner.expertise.split("\n")[0]}
                       </p>
                     </div>
@@ -235,7 +235,7 @@ export default async function Home() {
               <div className="mt-12">
                 <Link
                   href="/partners"
-                  className="inline-flex items-center gap-2 border border-gold text-gold px-6 py-2.5 text-sm font-semibold tracking-wide hover:bg-gold hover:text-navy transition-colors group"
+                  className="inline-flex items-center gap-2 border border-white/40 text-white/80 px-6 py-2.5 text-sm font-semibold tracking-wide hover:bg-white hover:text-gray-900 transition-colors group"
                 >
                   Meet the Full Team
                   <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -375,7 +375,7 @@ export default async function Home() {
             <p className="text-white/70 text-lg mb-8 leading-relaxed">{s["cta.subtitle"]}</p>
             <Link
               href="/contact"
-              className="bg-gold text-navy font-bold px-12 py-4 text-sm tracking-widest uppercase hover:bg-gold-dark transition-colors inline-block"
+              className="bg-gold text-gray-900 font-bold px-12 py-4 text-sm tracking-widest uppercase hover:bg-gold-dark transition-colors inline-block"
             >
               Get in Touch
             </Link>

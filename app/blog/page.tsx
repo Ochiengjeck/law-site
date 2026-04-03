@@ -65,7 +65,7 @@ export default async function BlogPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-7">
-                      <span className="inline-block bg-gold text-navy text-xs font-bold px-3 py-1 tracking-widest uppercase mb-3">
+                      <span className="inline-block bg-gold text-gray-900 text-xs font-bold px-3 py-1 tracking-widest uppercase mb-3">
                         Featured
                       </span>
                       <h2 className="text-xl md:text-2xl font-black text-white mb-2 group-hover:text-gold transition-colors leading-tight">
@@ -76,7 +76,7 @@ export default async function BlogPage() {
                           {featured.excerpt}
                         </p>
                       )}
-                      <p className="text-gray-400 text-xs mt-3">
+                      <p className="text-white/65 text-xs mt-3">
                         <span className="text-gold">•</span>{" "}
                         {new Date(featured.createdAt).toLocaleDateString("en-KE", {
                           day: "numeric",

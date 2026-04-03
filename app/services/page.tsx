@@ -101,7 +101,7 @@ export default async function ServicesPage() {
               <div className="mb-8">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-6 h-px bg-gold" />
-                  <p className="text-gold text-xs tracking-[0.4em] uppercase font-medium">
+                  <p className="text-white/60 text-xs tracking-[0.4em] uppercase font-medium">
                     Additional Services
                   </p>
                 </div>
@@ -114,7 +114,7 @@ export default async function ServicesPage() {
                     className="bg-white/5 border border-white/10 p-5 hover:border-gold/40 transition-colors"
                   >
                     <h3 className="font-black text-white mb-2 text-sm">{item.title}</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">{item.description}</p>
+                    <p className="text-white/60 text-sm leading-relaxed">{item.description}</p>
                   </div>
                 ))}
               </div>
@@ -135,7 +135,7 @@ export default async function ServicesPage() {
             </p>
             <Link
               href="/contact"
-              className="bg-gold text-navy font-bold px-8 py-3 text-xs tracking-widest uppercase hover:bg-gold-dark transition-colors inline-block"
+              className="bg-gold text-gray-900 font-bold px-8 py-3 text-xs tracking-widest uppercase hover:bg-gold-dark transition-colors inline-block"
             >
               Get in Touch
             </Link>

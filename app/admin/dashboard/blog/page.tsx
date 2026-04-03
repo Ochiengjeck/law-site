@@ -15,7 +15,7 @@ export default async function AdminBlogPage() {
         <h1 className="text-2xl font-bold text-navy">Blog Posts</h1>
         <Link
           href="/admin/dashboard/blog/new"
-          className="bg-navy text-white text-xs font-medium px-5 py-2.5 hover:bg-navy-dark transition-colors tracking-widest uppercase"
+          className="bg-navy-dark text-white text-xs font-medium px-5 py-2.5 hover:opacity-90 transition-opacity tracking-widest uppercase"
         >
           + New Post
         </Link>

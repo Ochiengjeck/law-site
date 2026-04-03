@@ -129,7 +129,7 @@ export default async function PartnersPage() {
             </p>
             <Link
               href="/contact"
-              className="bg-gold text-navy font-bold px-8 py-3 text-xs tracking-widest uppercase hover:bg-gold-dark transition-colors inline-block"
+              className="bg-gold text-gray-900 font-bold px-8 py-3 text-xs tracking-widest uppercase hover:bg-gold-dark transition-colors inline-block"
             >
               Contact the Firm
             </Link>

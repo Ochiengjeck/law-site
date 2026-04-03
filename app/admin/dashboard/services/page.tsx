@@ -15,7 +15,7 @@ export default async function ServicesAdminPage() {
         </div>
         <Link
           href="/admin/dashboard/services/new"
-          className="bg-navy text-white text-sm font-semibold px-4 py-2 rounded hover:bg-navy-dark transition-colors"
+          className="bg-navy-dark text-white text-sm font-semibold px-4 py-2 rounded hover:opacity-90 transition-opacity"
         >
           + New Service
         </Link>

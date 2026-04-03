@@ -46,7 +46,7 @@ export default function HeroSection({
         <div className="flex flex-wrap gap-4">
           <Link
             href="/contact"
-            className="bg-gold px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-navy transition-colors hover:bg-gold-dark"
+            className="bg-gold px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-gray-900 transition-colors hover:bg-gold-dark"
           >
             {cta1}
           </Link>

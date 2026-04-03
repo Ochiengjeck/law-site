@@ -111,8 +111,8 @@ export default function NavbarClient({ logoUrl }: Props) {
             href="/contact"
             className={`px-5 py-2 rounded font-semibold transition-colors ${
               isActive("/contact")
-                ? "bg-white text-navy"
-                : "bg-gold text-navy hover:bg-gold-dark"
+                ? "bg-white text-gray-900"
+                : "bg-gold text-gray-900 hover:bg-gold-dark"
             }`}
           >
             Contact Us

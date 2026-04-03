@@ -62,7 +62,7 @@ export default async function MediaPage({
           href="/admin/dashboard/media"
           className={`border px-3 py-1.5 text-xs transition-colors ${
             !category
-              ? "border-navy bg-navy text-white"
+              ? "border-navy-dark bg-navy-dark text-white"
               : "border-gray-300 text-gray-600 hover:border-navy hover:text-navy"
           }`}
         >
