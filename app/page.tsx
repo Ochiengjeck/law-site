@@ -365,7 +365,8 @@ export default async function Home() {
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-navy-dark/96 to-navy/88" />
+
+          <div className="absolute inset-0 bg-[#0CB8CC]/88" />
           <div className="relative z-10 max-w-2xl mx-auto text-center text-white border border-white/20 p-8 md:p-12">
             {/* Gold rule above */}
             <div className="w-12 h-px bg-gold mx-auto mb-5" />

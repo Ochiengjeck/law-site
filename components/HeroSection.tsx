@@ -28,33 +28,39 @@ export default function HeroSection({
         priority
       />
 
-      <div className="absolute inset-0 bg-black/55" />
+
+      <div className="absolute inset-0 bg-[#0CB8CC]/55" />
 
       <div className="relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col justify-center px-6 py-24 text-white">
-        <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-gold">
+        <p className="mb-4 text-sm font-black uppercase tracking-[0.3em] text-gray-900 italic">
           {badge}
         </p>
 
-        <h1 className="mb-6 max-w-3xl text-4xl font-bold leading-tight md:text-6xl">
+        <h1 className="mb-3 max-w-3xl text-4xl font-bold leading-tight md:text-6xl drop-shadow-sm">
           {line1}
         </h1>
 
-        <p className="mb-8 max-w-2xl text-base leading-relaxed text-white/85 md:text-lg">
+        {/* Gold underline */}
+        <div className="w-16 h-0.5 bg-gold mb-6 animate-draw-line" />
+
+        <p className="mb-8 max-w-2xl text-base leading-relaxed text-white/80 md:text-lg">
           {subtitle}
         </p>
 
         <div className="flex flex-wrap gap-4">
           <Link
             href="/contact"
-            className="bg-gold px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-gray-900 transition-colors hover:bg-gold-dark"
+            className="group relative bg-gold px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-gray-900 transition-all duration-300 hover:bg-gold-dark hover:shadow-lg hover:shadow-gold/30 hover:-translate-y-0.5 active:translate-y-0"
           >
             {cta1}
+            <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-gray-900/30 transition-all duration-300 group-hover:w-full" />
           </Link>
           <Link
             href="/services"
-            className="border border-white/30 px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white transition-colors hover:bg-white hover:text-navy"
+            className="group relative border border-white/50 px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white transition-all duration-300 hover:border-white hover:bg-white/15 hover:shadow-lg hover:shadow-white/10 hover:-translate-y-0.5 active:translate-y-0"
           >
             {cta2}
+            <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-white/50 transition-all duration-300 group-hover:w-full" />
           </Link>
         </div>
       </div>
