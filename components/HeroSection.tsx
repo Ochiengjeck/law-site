@@ -29,7 +29,7 @@ export default function HeroSection({
       />
 
 
-      <div className="absolute inset-0 bg-[#0CB8CC]/55" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0CB8CC] via-[#0CB8CC]/75 to-[#0CB8CC]/50" />
 
       <div className="relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col justify-center px-6 py-24 text-white">
         <p className="mb-4 text-sm font-black uppercase tracking-[0.3em] text-gray-900 italic">
@@ -41,7 +41,7 @@ export default function HeroSection({
         </h1>
 
         {/* Gold underline */}
-        <div className="w-16 h-0.5 bg-gold mb-6 animate-draw-line" />
+        <div className="w-40 h-0.5 bg-gold mb-6 animate-draw-line" />
 
         <p className="mb-8 max-w-2xl text-base leading-relaxed text-white/80 md:text-lg">
           {subtitle}
